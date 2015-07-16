@@ -1,0 +1,18 @@
+Check into using request parser for grabbing json.
+Work on grabbing customer by ID.
+Work on why customer_client won't freaking work right.
+Refactor into modules - models, resources, db, etc.,
+Write unit tests.
+Write blog post.
+Work on getting 'id' in the right order from the output.
+Take a look at that to_json @property or maybe consider
+using the @marshal_whatever decorator that comes with 
+Flask-RESTful.
+
+Also having the output have a named root like "customers" was just because 
+you were going to use Ember Data in the original project .. but this project
+isn't using Ember yet. Not for the sake of this exact tutorial. So
+output however.
+
+- 7/16/2015
+

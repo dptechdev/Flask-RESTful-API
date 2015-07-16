@@ -48,14 +48,27 @@ class CustomersResource(Resource):
 		db.session.add(new_customer)
 		db.session.commit()
 
+class CustomerResource(Resource):
+	def put(self, id):
+		customer = Customer.query.get(id)
+		req = request.json['customer']
+		customer.firstname = req['firstname']
+		customer.lastname = req['lastname']
+		db.session.commit()
+
+	def delete(self, id):
+		customer = Customer.query.get(id)
+		db.session.delete(customer)
+		db.session.commit()
+
 if __name__ == '__main__':
-	api.add_resource(CustomersResource, '/api/customers', methods=['GET', 'POST'])
+	
 	db.drop_all()
 	db.create_all()
-	"""
-	customer1 = Customer("Derek", "Pauley")
-	db.session.add(customer1)
-	db.session.commit()
-	"""
+
+	api.add_resource(CustomersResource, '/api/customers', methods=['GET', 'POST'])
+	api.add_resource(CustomerResource, '/api/customers/<int:id>', methods=['GET', 'POST', 'PUT', 'DELETE'])
+
+	
 	app.run()
 	
