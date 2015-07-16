@@ -32,7 +32,7 @@ class Customer(db.Model):
 @app.route('/')
 @app.route('/index')
 def index():
-	return send_file("index.html")
+	return jsonify(customers="/api/customers")
 
 class CustomersResource(Resource):
 	def get(self):
